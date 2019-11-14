@@ -1,4 +1,4 @@
-  import PySimpleGUI as sg
+import PySimpleGUI as sg
 import wikipedia
 
 sg.change_look_and_feel('Reds')
