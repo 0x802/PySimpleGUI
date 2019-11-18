@@ -1,9 +1,6 @@
 import PySimpleGUI as sg
-from playsound import playsound
 
 sg.change_look_and_feel('DarkBlue')
-
-# some
 
 # English To Morse 
 string_to_mors = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---', 'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--', 'z': '--..', '0': '-----', ',': '--..--', '1': '.----', '.': '.-.-.-', '2': '..---', '?': '..--..', '3': '...--', ';': '-.-.-.', '4': '....-', ':': '---...', '5': '.....', "'": '.----.', '6': '-....', '-': '-....-', '7': '--...', '/': '-..-.', '8': '---..', '(': '-.--.-', '9': '----.', ')': '-.--.-', '_': '..--.-', ' ': ' ',    }
@@ -48,7 +45,7 @@ def go_play(text):
 
     for Play in text.split():
             try:
-                playsound(f'../../../python/Morse/ogg/{morse_to_string[Play]}.mp3')
+                playsound(f'./ogg/{morse_to_string[Play]}.mp3')
             except Exception as e:
                 continue
 
@@ -56,7 +53,7 @@ def main_window():
     layout =\
     [
         [sg.Text(" "*20+"Input"),sg.Text(" "*45+"Output") ],
-        [sg.Multiline( size=(25, 10), key='-in-', disabled=False, do_not_clear=False,enter_submits=True, text_color="white"),sg.Text(">>"), sg.Output(size=(25, 10), key='-out-',text_color="white")],
+        [sg.Multiline( size=(25, 10), key='-in-', do_not_clear=False,enter_submits=True, text_color="white"),sg.Text(">>"), sg.Output(size=(25, 10), key='-out-',text_color="white")],
         [sg.Text(" "* 30), sg.Col(
                 [
                     [sg.Combo(('Encrypt', 'Decrypt'), size=(10, 1),text_color="black",readonly=True, key='-deOren-'),sg.CBox('Play', default=False, key='-play-')],
@@ -113,6 +110,5 @@ def main():
                 if b['-play-'] == True:
                     go_play(data)
         
-
 if __name__ == "__main__":
     main()
